@@ -1,0 +1,133 @@
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* login page (no sidebar) */
+.login-page {
+    -fx-background-color: linear-gradient(to bottom right, #eaf6fd, #f4f7fb);
+}
+
+/* left sidebar, only after login */
+.sidebar {
+    -fx-background-color: white;
+    -fx-border-color: #e3e8f2;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 18 14 14 14;
+    -fx-min-width: 240;
+    -fx-pref-width: 240;
+    -fx-max-width: 240;
+}
+
+.group-header {
+    -fx-background-color: #eef3fb;
+    -fx-text-fill: #12285a;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-padding: 10 14 10 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.group-header:hover {
+    -fx-background-color: #e1eafa;
+}
+
+.menu-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #42506b;
+    -fx-alignment: center-left;
+    -fx-padding: 8 14 8 14;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.menu-item:hover {
+    -fx-background-color: #f1f5fb;
+}
+
+.menu-item.active {
+    -fx-background-color: #2f80ed;
+    -fx-text-fill: white;
+}
+
+.logout-button {
+    -fx-background-color: #e03e3e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 10 14;
+    -fx-cursor: hand;
+}
+
+.logout-button:hover {
+    -fx-background-color: #c42b2b;
+}
+
+.signed-in {
+    -fx-text-fill: #8090aa;
+    -fx-font-size: 11px;
+}
+
+/* page content */
+.content {
+    -fx-background-color: #f4f7fb;
+    -fx-padding: 28;
+}
+
+.page-title {
+    -fx-text-fill: #12285a;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.muted {
+    -fx-text-fill: #6b7690;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(18, 40, 90, 0.12), 14, 0, 0, 3);
+}
+
+.card-title {
+    -fx-text-fill: #12285a;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.primary-button {
+    -fx-background-color: #2f80ed;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1f6fd8;
+}
+
+.secondary-button {
+    -fx-background-color: #e3e8f2;
+    -fx-text-fill: #12285a;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.danger-button {
+    -fx-background-color: #fdecea;
+    -fx-text-fill: #c0392b;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.error-text {
+    -fx-text-fill: #c0392b;
+    -fx-wrap-text: true;
+}
