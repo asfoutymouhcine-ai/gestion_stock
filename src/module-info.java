@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module gestion_stock {
-}

@@ -1,57 +1,44 @@
 package stockpulse;
 
 import java.util.Scanner;
-import java.time.LocalDate;
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner clavier = new Scanner(System.in);
+        System.out.println("=======================================");
+        System.out.println("   STOCKPULSE - CATALOGUE PRODUITS     ");
+        System.out.println("=======================================");
 
-        System.out.println("=== StockPulse : Inventaire ===");
+        // Initialisation des repositories
+        IRepository<Produit> produitRepo = new InMemoryRepository<>();
+        IRepository<Categorie> categorieRepo = new InMemoryRepository<>();
+        IRepository<Emplacement> emplacementRepo = new InMemoryRepository<>();
 
-        try {
-            System.out.print("Quantite theorique : ");
-            int theorique = Integer.parseInt(clavier.nextLine());
+        // Initialisation des services
+        CategorieService categorieService = new CategorieService(categorieRepo, emplacementRepo);
+        ProduitService produitService = new ProduitService(produitRepo);
 
-            System.out.print("Quantite reelle : ");
-            int reelle = Integer.parseInt(clavier.nextLine());
+        // Données de démonstration
+        Categorie cat1 = new Categorie("C1", "Informatique");
+        Categorie cat2 = new Categorie("C2", "Bureautique");
+        Emplacement emp1 = new Emplacement("E1", "Rayon-A1");
+        Emplacement emp2 = new Emplacement("E2", "Stock-Principal");
 
-            if (theorique < 0 || reelle < 0) {
-                System.out.println("Erreur : les quantites doivent etre positives ou nulles.");
-            } else {
-            	Inventaire inventaire = new Inventaire(1, LocalDate.now());
+        categorieService.ajouterCategorie(cat1);
+        categorieService.ajouterCategorie(cat2);
+        categorieService.ajouterEmplacement(emp1);
+        categorieService.ajouterEmplacement(emp2);
 
-            	inventaire.ajouterLigne(theorique, reelle);
+        Produit p1 = new Produit("P001", "PC Portable ROG", 12000.0, 5, 2, UniteMesure.PIECE, cat1, emp1);
+        Produit p2 = new Produit("P002", "Souris Sans Fil", 250.0, 20, 5, UniteMesure.PIECE, cat1, emp1);
+        Produit p3 = new Produit("P003", "Rame Papier A4", 45.0, 50, 10, UniteMesure.CARTON, cat2, emp2);
 
-            	inventaire.afficherEcarts();
-            	
-            	CritereInventaire critere = new CritereInventaire() {
+        produitService.ajouterProduit(p1);
+        produitService.ajouterProduit(p2);
+        produitService.ajouterProduit(p3);
 
-            	    @Override
-            	    public boolean tester(LigneInventaire ligne) {
-            	        return ligne.getEcart() != 0;
-            	    }
-            	};
-            	//recupere l'ecarr negative s'il exesiste on va met true  
-            	//Predicate<LigneInventaire> critereManque =
-            	        //ligne -> ligne.getEcart() < 0;
-
-            	//System.out.println("Presence d'un manque : "
-            	        //+ critereManque.test(ligneTest));
-            	
-            	CritereInventaire critereManque = ligne -> ligne.getEcart() < 0;
-
-            	LigneInventaire ligneTest =
-            	        new LigneInventaire(theorique, reelle);
-
-            	System.out.println("Presence d'un ecart : " + critere.tester(ligneTest));
-            }
-
-        } catch (NumberFormatException e) {
-            System.out.println("Erreur : entrez des nombres entiers !");
-        }
-
-        clavier.close();
+        // Lancement du menu Catalogue
+        MenuCatalogue menuCatalogue = new MenuCatalogue(produitService, categorieService);
+        menuCatalogue.afficherMenu();
     }
 }
