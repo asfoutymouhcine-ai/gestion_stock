@@ -1,13 +1,15 @@
 package stockpulse;
+import java.io.Serializable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Inventaire {
+public class Inventaire implements Serializable  {
 
     private long id;
     private LocalDate date;
     private ArrayList<LigneInventaire> lignes = new ArrayList<>();
+    private static final long serialVersionUID = 1L;
 
     public Inventaire(long id, LocalDate date) {
         this.id = id;

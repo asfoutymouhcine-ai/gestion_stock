@@ -1,9 +1,11 @@
 package stockpulse;
+import java.io.Serializable;
 
-public class LigneInventaire {
+public class LigneInventaire implements Serializable {
 
     private int quantiteTheorique;
     private int quantiteReelle;
+    private static final long serialVersionUID = 1L;
 
     public LigneInventaire(int quantiteTheorique, int quantiteReelle) {
         this.quantiteTheorique = quantiteTheorique;
